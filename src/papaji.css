@@ -656,13 +656,25 @@ body {
 .btn-view-all:hover { background: var(--chilli); color: white; }
 
 @media (max-width: 768px) {
-  .spice-blob-wrap { width: 200px; height: 200px; }
-  .spice-img { width: 130px; height: 130px; }
+  .spices-slider-outer { margin: 0; gap: 8px; }
+  .spice-card { flex: 0 0 100%; padding: 20px 24px 28px; transform: scale(1) !important; }
+  .spice-card.active { transform: scale(1) !important; z-index: 1; }
+  .spice-blob-wrap { width: 220px; height: 220px; }
+  .spice-img { width: 140px; height: 140px; }
+  .spice-card h3 { font-size: 18px; }
+  .sc-arrow-side { width: 40px; height: 40px; font-size: 22px; flex-shrink: 0; }
 }
 
 @media (max-width: 480px) {
-  .spice-card { flex: 0 0 100%; }
-  .spices-slider-outer { gap: 8px; }
+  .spices-slider-outer { margin: 0; gap: 6px; }
+  .spice-card { flex: 0 0 100%; padding: 16px 16px 24px; transform: scale(1) !important; }
+  .spice-card.active { transform: scale(1) !important; }
+  .spice-blob-wrap { width: 190px; height: 190px; }
+  .spice-img { width: 120px; height: 120px; }
+  .spice-card h3 { font-size: 16px; }
+  .sc-arrow-side { width: 36px; height: 36px; font-size: 20px; }
+  .spices-controls { padding: 8px 14px; gap: 8px; }
+  .btn-view-all { padding: 6px 14px; font-size: 12px; }
 }
 
 /* ===== ABOUT SECTION ===== */

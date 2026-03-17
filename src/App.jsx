@@ -169,6 +169,14 @@ export default function App() {
   const isJumping = useRef(false);
 
   // 3 clones at start + 3 at end for seamless loop
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 768)
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+
   const CLONE_COUNT = 3;
   const CLONED = [
     ...SPICES.slice(-CLONE_COUNT),
@@ -401,12 +409,12 @@ export default function App() {
               ref={trackRef}
               onTransitionEnd={handleTrackTransitionEnd}
               style={{
-                transform: `translateX(-${(spiceIdx + CLONE_COUNT - 1) * (100 / 3)}%)`,
+                transform: `translateX(-${(spiceIdx + CLONE_COUNT - 1) * (isMobile ? 100 : 100 / 3)}%)`,
               }}
             >
               {CLONED.map((s, i) => {
                 const centerInCloned = spiceIdx + CLONE_COUNT;
-                const isCenter = i === centerInCloned;
+                const isCenter = isMobile ? i === centerInCloned : i === centerInCloned;
                 return (
                   <div
                     className={`spice-card ${isCenter ? "active" : ""}`}
