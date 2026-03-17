@@ -1,131 +1,181 @@
 import { useState, useEffect, useRef } from "react";
 import "./papaji.css";
 
-const SLIDES = [
+const HERO_PRODUCTS = [
   {
-    bg: "/Papaji-Product-Catalogue-6-5.jpg",
-    title: "Pure & Authentic Spices",
-    sub: "Straight from the farms of India",
+    nameFirst: "Cardamom",
+    nameLast: "Chai",
+    bgWord: "CHAI",
+    tag: "PREMIUM PREMIX — 200G",
+    img: "/Cardamom-Milk-Icon.jpg",
+    badges: ["Vegan", "Halal", "Canada"],
   },
   {
-    bg: "/Local-Collaboration.jpg",
-    title: "Bold Flavours, Rich Heritage",
-    sub: "Crafted with generations of expertise",
+    nameFirst: "Masala",
+    nameLast: "Chai",
+    bgWord: "CHAI",
+    tag: "PREMIUM PREMIX — 200G",
+    img: "/Masala-Chai-Icon.jpg",
+    badges: ["Vegan", "Halal", "Canada"],
   },
   {
-    bg: "/Schezwan-Sauce.jpg",
-    title: "Spice Up Every Moment",
-    sub: "Premium blends for every kitchen",
-  },
-];
-
-const SPICES = [
-  {
-    name: "Turmeric Powder",
-    origin: "Kerala, India",
-    heat: "🌶",
-    price: "₹120",
-    img: "/Gemini_Generated_Image_65aya665aya665ay.png",
-    accent: "#f59e0b",
+    nameFirst: "Schezwan",
+    nameLast: "Sauce",
+    bgWord: "SAUCE",
+    tag: "SIGNATURE SAUCE — 300G",
+    img: "/Schezwan-Sauce-New.jpg",
+    badges: ["Vegan", "Halal", "Canada"],
   },
   {
-    name: "Red Chilli Powder",
-    origin: "Rajasthan, India",
-    heat: "🌶🌶🌶",
-    price: "₹95",
-    img: "/Gemini_Generated_Image_9rbak99rbak99rba.png",
-    accent: "#dc2626",
-  },
-  {
-    name: "Cumin Seeds",
-    origin: "Gujarat, India",
-    heat: "🌶",
-    price: "₹85",
-    img: "/Gemini_Generated_Image_dn4mq0dn4mq0dn4m.png",
-    accent: "#92400e",
-  },
-  {
-    name: "Coriander Powder",
-    origin: "Madhya Pradesh",
-    heat: "🌶",
-    price: "₹75",
-    img: "/Gemini_Generated_Image_en2goxen2goxen2g.png",
-    accent: "#16a34a",
-  },
-  {
-    name: "Garam Masala",
-    origin: "Punjab, India",
-    heat: "🌶🌶",
-    price: "₹150",
-    img: "/Gemini_Generated_Image_o334b7o334b7o334.png",
-    accent: "#ea580c",
-  },
-  {
-    name: "Black Pepper",
-    origin: "Karnataka, India",
-    heat: "🌶🌶",
-    price: "₹200",
-    img: "/Gemini_Generated_Image_oe348noe348noe34.png",
-    accent: "#1e293b",
-  },
-  {
-    name: "Cardamom",
-    origin: "Sikkim, India",
-    heat: "🌶",
-    price: "₹350",
-    img: "/Gemini_Generated_Image_zandl7zandl7zand.png",
-    accent: "#15803d",
-  },
-  {
-    name: "Saffron",
-    origin: "Kashmir, India",
-    heat: "✨",
-    price: "₹800",
-    img: "/Gemini_Generated_Image_65aya665aya665ay.png",
-    accent: "#b45309",
+    nameFirst: "Tandoori",
+    nameLast: "Mayo",
+    bgWord: "MAYO",
+    tag: "CREAMY CONDIMENT — 250G",
+    img: "/Tandoori-Mayo-Icon.jpg",
+    badges: ["Halal", "Canada"],
   },
 ];
 
-const NEWS_TABS = ["Latest News", "Company Updates", "Product News"]
+const FILTER_TABS = ["All", "Chai", "Sauces", "Mayo", "Halal", "Vegan"];
+
+const BESTSELLERS = [
+  // CHAI
+  {
+    name: "Cardamom Chai Premix",
+    desc: "Rich aromatic cardamom — restaurant quality at home.",
+    img: "/Cardamom-Milk-Icon.jpg",
+    tags: ["Vegan", "Halal"],
+    category: ["All", "Chai", "Vegan", "Halal"],
+  },
+  {
+    name: "Masala Chai Premix",
+    desc: "Bold warming spices — the classic Indian chai blend.",
+    img: "/Masala-Chai-Icon.jpg",
+    tags: ["Vegan", "GF"],
+    category: ["Chai", "Vegan"],
+  },
+  {
+    name: "Kadak Chai",
+    desc: "Strong, full-bodied chai for the true chai lover.",
+    img: "/Kadak-Chai-Icon.jpg",
+    tags: ["Vegan", "GF"],
+    category: ["Chai", "Vegan"],
+  },
+  {
+    name: "Zafrani Chai",
+    desc: "Saffron-infused premium chai — rich and aromatic.",
+    img: "/Zafrani-Chai-Icon.jpg",
+    tags: ["Vegan", "Halal"],
+    category: ["Chai", "Vegan", "Halal"],
+  },
+  {
+    name: "Pink Chai",
+    desc: "Kashmiri noon chai — delicate, floral and creamy.",
+    img: "/Pink-Tea-Icon.jpg",
+    tags: ["Vegan"],
+    category: ["Chai", "Vegan"],
+  },
+  {
+    name: "Ginger Cardamom Chai",
+    desc: "Zesty ginger meets fragrant cardamom in every sip.",
+    img: "/Ginger-Cardamom-Icon.jpg",
+    tags: ["Vegan", "Halal"],
+    category: ["Chai", "Vegan", "Halal"],
+  },
+  // SAUCES
+  {
+    name: "Schezwan Sauce",
+    desc: "Fiery Indo-Chinese. 1kg food service pack.",
+    img: "/Schezwan-Sauce-New.jpg",
+    tags: ["Vegan", "Halal"],
+    category: ["All", "Sauces", "Vegan", "Halal"],
+  },
+  // MAYO
+  {
+    name: "Tandoori Mayo",
+    desc: "Smoky spiced mayo — perfect for wraps & dips.",
+    img: "/Tandoori-Mayo-Icon.jpg",
+    tags: ["Halal"],
+    category: ["All", "Mayo", "Halal"],
+  },
+  {
+    name: "Peri Peri Mayo",
+    desc: "Tangy, fiery peri peri — great for grills & burgers.",
+    img: "/Peri-Peri-Mayo-Icon.jpg",
+    tags: ["Halal"],
+    category: ["Mayo", "Halal"],
+  },
+  {
+    name: "Jalapeño Mayo",
+    desc: "Cool heat of jalapeño in a creamy mayo base.",
+    img: "/Jalapeno-Mayo-Icon.jpg",
+    tags: ["Halal"],
+    category: ["Mayo", "Halal"],
+  },
+  {
+    name: "Achari Mayo",
+    desc: "Tangy pickle-spiced mayo — uniquely Indian.",
+    img: "/Achari-May-Icon.jpg",
+    tags: ["Halal"],
+    category: ["Mayo", "Halal"],
+  },
+  {
+    name: "Vegan Plain Mayo",
+    desc: "100% plant-based creamy mayo — clean and simple.",
+    img: "/Vegan-Plain-Mayo-Icon.jpg",
+    tags: ["Vegan"],
+    category: ["Mayo", "Vegan"],
+  },
+  {
+    name: "Italian Herb & Garlic",
+    desc: "Herb-infused mayo with roasted garlic notes.",
+    img: "/Italian-Herb-and-Garlic-Icon.jpg",
+    tags: ["Vegan"],
+    category: ["Mayo", "Vegan"],
+  },
+];
 
 const NEWS_ITEMS = [
   {
     tab: "Latest News",
-    date: "March 10, 2026",
-    title: "Papaji Wins Best Spice Brand at India Food Awards",
-    desc: "Our commitment to purity and authenticity has been recognised at the prestigious India Food Awards 2026, winning the Best Spice Brand category.",
-    img: "/Local-Collaboration.jpg",
-    accent: "#f59e0b",
+    category: "LATEST NEWS",
+    date: "March 2026",
+    title: "Papaji Foods Expands Across Major Canadian Retailers",
+    desc: "Our products are now available at major Canadian retailers nationwide, bringing authentic flavours closer to every kitchen.",
+    icon: "🏆",
+    accent: "#E65300",
     slides: [
-      { title: "The Award Ceremony", body: "Held in Mumbai, the India Food Awards celebrated the finest in Indian food industry. Papaji stood out among 200+ nominees for its farm-direct sourcing model." },
-      { title: "What This Means", body: "This recognition validates our 30-year journey of bringing authentic spices from Indian farms to kitchens across the country." },
-      { title: "Thank You", body: "A heartfelt thanks to our 200+ farming partners and 1M+ loyal customers who made this possible." },
+      { title: "The Expansion", body: "Papaji Foods is now stocked in 500+ retail locations across Canada including major grocery chains." },
+      { title: "What This Means", body: "Customers across Canada can now find their favourite chai premixes and sauces at their local store." },
+      { title: "Thank You", body: "A heartfelt thanks to our 1M+ loyal customers who made this expansion possible." },
     ]
   },
   {
     tab: "Company Updates",
-    date: "February 20, 2026",
-    title: "Papaji Expands to 5 New States Across India",
-    desc: "We are thrilled to announce our expansion into Assam, Meghalaya, Tripura, Manipur and Nagaland — bringing authentic spices to the Northeast.",
-    img: "/Papaji-Product-Catalogue-6-5.jpg",
-    accent: "#3b82f6",
+    category: "COMPANY UPDATES",
+    date: "Feb 2026",
+    title: "New Chai Machine Partnership",
+    desc: "We've partnered with leading hospitality chains to bring our chai machines to restaurants and cafes across the GTA.",
+    icon: "🤝",
+    accent: "#E65300",
     slides: [
-      { title: "Northeast Expansion", body: "Our new distribution network covers 500+ retail outlets across 5 northeastern states, making Papaji accessible to millions of new customers." },
-      { title: "Local Partnerships", body: "We've partnered with local distributors to ensure fresh stock and timely delivery across the region." },
-      { title: "New Warehouses", body: "Two new cold-storage warehouses have been set up in Guwahati and Imphal to maintain product freshness." },
+      { title: "The Partnership", body: "Our chai machines are now deployed in 200+ hospitality locations across the Greater Toronto Area." },
+      { title: "What's Next", body: "We plan to expand to Vancouver and Montreal by end of 2026." },
+      { title: "For Businesses", body: "Interested in a chai machine for your business? Contact us at sales@papajifoods.com" },
     ]
   },
   {
     tab: "Product News",
-    date: "January 15, 2026",
-    title: "Introducing Papaji Schezwan Sauce — Bold & Fiery",
-    desc: "Our newest product — Schezwan Sauce — is here. Made with hand-picked red chillis and authentic spices, it's the perfect fusion of Indian and Asian flavours.",
-    img: "/Schezwan-Sauce.jpg",
-    accent: "#dc2626",
+    category: "PRODUCT NEWS",
+    date: "Jan 2026",
+    title: "3 New Mayo Flavours Launched",
+    desc: "We've launched three exciting new mayo flavours — Italian Herb & Garlic, Jalapeño, and Vegan Plain — available now.",
+    icon: "🆕",
+    accent: "#E65300",
     slides: [
-      { title: "What's Inside", body: "A bold blend of red chillis, garlic, ginger and Papaji's signature spice mix — no artificial preservatives, no shortcuts." },
-      { title: "How to Use", body: "Perfect as a dip, spread, or cooking sauce. Pairs beautifully with momos, noodles, fried rice and more." },
-      { title: "Where to Buy", body: "Available now on our website and at 2000+ retail stores across India. Look for the iconic red bottle." },
+      { title: "New Flavours", body: "Italian Herb & Garlic, Jalapeño Mayo, and Vegan Plain Mayo are now available online and in stores." },
+      { title: "Why We Made Them", body: "Customer feedback drove us to expand our mayo range with more vegan and bold flavour options." },
+      { title: "Where to Buy", body: "Available now on our website and at select retailers across Canada." },
     ]
   },
 ]
@@ -152,100 +202,55 @@ const BlobSVG = ({ color }) => (
 );
 
 export default function App() {
-  const [current, setCurrent] = useState(0);
+  const [heroIdx, setHeroIdx] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [loginOpen, setLoginOpen] = useState(false);
-  const [spiceIdx, setSpiceIdx] = useState(0);
-  const [activeTab, setActiveTab] = useState(0)
+  const [activeFilter, setActiveFilter] = useState("All");
+  const [showAllProducts, setShowAllProducts] = useState(false);
   const [slideOpen, setSlideOpen] = useState(false)
   const [slideItem, setSlideItem] = useState(null)
 
   const openSlide = (item) => { setSlideItem(item); setSlideOpen(true) }
   const closeSlide = () => setSlideOpen(false)
-  const activeNews = NEWS_ITEMS[activeTab]
   const timerRef = useRef(null);
-  const spiceTimerRef = useRef(null);
-  const trackRef = useRef(null);
-  const isJumping = useRef(false);
 
-  // 3 clones at start + 3 at end for seamless loop
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
-
+  // Header scroll effect
   useEffect(() => {
-    const onResize = () => setIsMobile(window.innerWidth <= 768)
-    window.addEventListener('resize', onResize)
-    return () => window.removeEventListener('resize', onResize)
-  }, [])
-
-  const CLONE_COUNT = 3;
-  const CLONED = [
-    ...SPICES.slice(-CLONE_COUNT),
-    ...SPICES,
-    ...SPICES.slice(0, CLONE_COUNT),
-  ];
-  // real items start at index CLONE_COUNT
-  const realStart = CLONE_COUNT;
-
-  const goSpice = (idx) => {
-    if (isJumping.current) return;
-    setSpiceIdx(idx);
-  };
-
-  const spicePrev = () => goSpice(spiceIdx - 1);
-  const spiceNext = () => goSpice(spiceIdx + 1);
-
-  const handleTrackTransitionEnd = () => {
-    const total = SPICES.length;
-    if (spiceIdx < 0) {
-      isJumping.current = true;
-      trackRef.current.style.transition = "none";
-      setSpiceIdx(spiceIdx + total);
-      requestAnimationFrame(() =>
-        requestAnimationFrame(() => {
-          if (trackRef.current) trackRef.current.style.transition = "";
-          isJumping.current = false;
-        }),
-      );
-    } else if (spiceIdx >= total) {
-      isJumping.current = true;
-      trackRef.current.style.transition = "none";
-      setSpiceIdx(spiceIdx - total);
-      requestAnimationFrame(() =>
-        requestAnimationFrame(() => {
-          if (trackRef.current) trackRef.current.style.transition = "";
-          isJumping.current = false;
-        }),
-      );
-    }
-  };
-
-  useEffect(() => {
-    spiceTimerRef.current = setInterval(() => {
-      setSpiceIdx((i) => i + 1);
-    }, 2500);
-    return () => clearInterval(spiceTimerRef.current);
+    const header = document.querySelector('.header');
+    const onScroll = () => {
+      if (window.scrollY > 10) header?.classList.add('scrolled');
+      else header?.classList.remove('scrolled');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Hero product auto-rotation
   useEffect(() => {
-    timerRef.current = setInterval(() => {
-      setCurrent((c) => (c + 1) % SLIDES.length);
-    }, 4000);
-    return () => clearInterval(timerRef.current);
+    const t = setInterval(() => setHeroIdx(i => (i + 1) % HERO_PRODUCTS.length), 3500);
+    return () => clearInterval(t);
   }, []);
-
-  const goTo = (i) => {
-    clearInterval(timerRef.current);
-    setCurrent(i);
-    timerRef.current = setInterval(
-      () => setCurrent((c) => (c + 1) % SLIDES.length),
-      4000,
-    );
-  };
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setMenuOpen(false);
   };
+
+  // Scroll reveal for bestseller cards
+  useEffect(() => {
+    const cards = document.querySelectorAll('.bs-card');
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((e) => {
+        if (e.isIntersecting) {
+          const idx = Array.from(cards).indexOf(e.target);
+          setTimeout(() => e.target.classList.add('revealed'), idx * 100);
+          observer.unobserve(e.target);
+        }
+      }),
+      { threshold: 0.15 }
+    );
+    cards.forEach((c) => observer.observe(c));
+    return () => observer.disconnect();
+  }, [activeFilter]);
 
   // Scroll-triggered animations
   useEffect(() => {
@@ -293,22 +298,32 @@ export default function App() {
 
   return (
     <div className="papaji-root">
+      {/* ANNOUNCEMENT BAR */}
+      <div className="announce-bar">
+        <span className="announce-new-badge">NEW</span>
+        <span className="announce-leaf">✿</span>
+        <span className="announce-text">Free delivery across GTA on orders $49+</span>
+        <a href="#" className="announce-link">Shop Now →</a>
+      </div>
+
       {/* HEADER */}
       <header className="header">
         <div className="header-inner">
           <div className="logo" onClick={() => scrollTo("home")}>
             <span className="logo-text">Papaji</span>
-            <span className="logo-caption">foods</span>
+            <span className="logo-dot">.</span>
+            <span className="logo-caption">Foods</span>
           </div>
           <nav className={`nav ${menuOpen ? "open" : ""}`}>
-            <a onClick={() => scrollTo("home")}>Home</a>
+            <a onClick={() => scrollTo("spices")}>Products</a>
+            <a href="#">Recipes</a>
+            <a href="#">Wholesale</a>
             <a onClick={() => scrollTo("about")}>About</a>
-            <a onClick={() => scrollTo("contact")}>Contact</a>
+            <a onClick={() => scrollTo("whatsnew")}>News</a>
           </nav>
           <div className="header-actions">
-            <button className="btn-login" onClick={() => setLoginOpen(true)}>
-              Login
-            </button>
+            <a href="#" className="btn-find-product">Find Product →</a>
+            <button className="btn-shop-now" onClick={() => scrollTo("spices")}>Shop Now</button>
             <button
               className="hamburger"
               onClick={() => setMenuOpen((m) => !m)}
@@ -322,136 +337,215 @@ export default function App() {
         </div>
       </header>
 
-      {/* LOGIN MODAL */}
-      {loginOpen && (
-        <div className="modal-overlay" onClick={() => setLoginOpen(false)}>
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={() => setLoginOpen(false)}>
-              ✕
-            </button>
-            <div className="modal-logo">🌶 Papaji</div>
-            <h2>Welcome Back</h2>
-            <input type="email" placeholder="Email address" />
-            <input type="password" placeholder="Password" />
-            <button className="btn-submit">Login</button>
-            <p className="modal-footer">
-              Don't have an account? <a href="#">Sign up</a>
+      {/* HERO */}
+      <section id="home" className="hero-split">
+        {/* LEFT — dark panel */}
+        <div className="hero-left">
+          <div className="hero-left-inner">
+            {/* two pill badges */}
+            <div className="hero-pills">
+              <span className="hero-pill">+ Made in Canada</span>
+              <span className="hero-pill hero-pill-orange">Est. 2015</span>
+            </div>
+
+            <h1 className="hero-headline">
+              <span className="hero-h-white">Good Taste.</span>
+              <span className="hero-h-orange">Good Health.</span>
+              <span className="hero-h-gray">Papaji Foods.</span>
+            </h1>
+
+            <p className="hero-desc">
+              Authentic Indian chai premixes, bold mayo sauces and fiery hakka sauces — crafted for every Canadian kitchen.
             </p>
+
+            <div className="hero-btns">
+              <button className="hero-btn-primary" onClick={() => scrollTo("spices")}>Explore Products →</button>
+              <button className="hero-btn-secondary" onClick={() => scrollTo("about")}>Our Story →</button>
+            </div>
+          </div>
+        </div>
+
+        {/* RIGHT — cream panel */}
+        <div className="hero-right">
+          {/* faded bg word */}
+          <div className="hero-right-bg-word">{HERO_PRODUCTS[heroIdx].bgWord}</div>
+
+          {/* sparkle stars */}
+          <span className="hero-sparkle">✦</span>
+          <span className="hero-sparkle">✦</span>
+          <span className="hero-sparkle">✦</span>
+          <span className="hero-sparkle">✦</span>
+
+          <div className="hero-product-showcase">
+            {HERO_PRODUCTS.map((p, i) => (
+              <div key={i} className={`hero-product-slide ${i === heroIdx ? "active" : ""}`}>
+                <div className="hero-product-img-wrap">
+                  <img src={p.img} alt={p.name} className="hero-product-img" />
+                </div>
+                <div className="hero-product-name">
+                  <span className="hero-product-name-regular">{p.nameFirst} </span>
+                  <span className="hero-product-name-italic">{p.nameLast}</span>
+                </div>
+                <div className="hero-product-tag">{p.tag}</div>
+                <div className="hero-badges">
+                  {p.badges.map((b, j) => (
+                    <span key={j} className={`hero-badge ${b === "Halal" ? "hero-badge-orange" : b === "Vegan" ? "" : "hero-badge-outline"}`}>{b}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <div className="hero-dots">
+              {HERO_PRODUCTS.map((_, i) => (
+                <button
+                  key={i}
+                  className={`hero-dot ${i === heroIdx ? "active" : ""}`}
+                  onClick={() => setHeroIdx(i)}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* MARQUEE TICKER */}
+      <div className="marquee-strip">
+        <div className="marquee-track">
+          {[...Array(4)].map((_, ri) =>
+            ['Chai Premix', 'Vegan Sauces', 'Halal Certified', 'Gluten Free', 'Made in Canada', 'Free GTA Delivery'].map((item, i) => (
+              <span key={`${ri}-${i}`} className="marquee-item">
+                {item.toUpperCase()}
+                <span className="marquee-dot">•</span>
+              </span>
+            ))
+          )}
+        </div>
+      </div>
+
+      {/* OUR COLLECTION — BESTSELLERS */}
+      <section id="spices" className="bestsellers-section">
+        <div className="bestsellers-header">
+          <div className="bestsellers-header-left">
+            <span className="bs-eyebrow">Most Popular</span>
+            <h2 className="bs-title">Our <em>Bestsellers</em></h2>
+          </div>
+          <button className="bs-view-all" onClick={() => setShowAllProducts(true)}>View All Products →</button>
+        </div>
+
+        {/* filter pills */}
+        <div className="bs-filters">
+          {FILTER_TABS.map((f) => (
+            <button
+              key={f}
+              className={`bs-filter ${activeFilter === f ? "active" : ""}`}
+              onClick={() => setActiveFilter(f)}
+            >
+              {f}
+            </button>
+          ))}
+        </div>
+
+        {/* product grid — max 3 per category */}
+        <div className="bs-grid">
+          {BESTSELLERS
+            .filter(p => p.category.includes(activeFilter))
+            .slice(0, 3)
+            .map((p, i) => (
+              <div className="bs-card" key={`${activeFilter}-${i}`}>
+                <div className="bs-card-img">
+                  <img src={p.img} alt={p.name} />
+                </div>
+                <div className="bs-card-body">
+                  <div className="bs-card-tags">
+                    {p.tags.map((t, j) => (
+                      <span key={j} className={`bs-tag ${t === "Halal" ? "bs-tag-orange" : ""}`}>{t}</span>
+                    ))}
+                  </div>
+                  <h3 className="bs-card-name">{p.name}</h3>
+                  <p className="bs-card-desc">{p.desc}</p>
+                  <a href="#" className="bs-card-link">View Product →</a>
+                </div>
+              </div>
+            ))}
+        </div>
+
+        {/* show count hint */}
+        {BESTSELLERS.filter(p => p.category.includes(activeFilter)).length > 3 && (
+          <div className="bs-more-hint">
+            +{BESTSELLERS.filter(p => p.category.includes(activeFilter)).length - 3} more in this category —{" "}
+            <button className="bs-more-link" onClick={() => setShowAllProducts(true)}>View All</button>
+          </div>
+        )}
+      </section>
+
+      {/* ALL PRODUCTS MODAL */}
+      {showAllProducts && (
+        <div className="all-products-overlay" onClick={() => setShowAllProducts(false)}>
+          <div className="all-products-modal" onClick={e => e.stopPropagation()}>
+            <div className="all-products-header">
+              <h2>All Products</h2>
+              <button className="all-products-close" onClick={() => setShowAllProducts(false)}>✕</button>
+            </div>
+            {/* group by category */}
+            {["Chai", "Sauces", "Mayo"].map(cat => {
+              const items = BESTSELLERS.filter(p => p.category.includes(cat) && !p.category.includes("All") || (p.category.includes("All") && p.category.includes(cat)));
+              const unique = BESTSELLERS.filter(p => p.category.includes(cat));
+              return (
+                <div key={cat} className="all-products-group">
+                  <h3 className="all-products-cat">{cat}</h3>
+                  <div className="all-products-grid">
+                    {unique.map((p, i) => (
+                      <div className="all-products-card" key={i}>
+                        <div className="all-products-img">
+                          <img src={p.img} alt={p.name} />
+                        </div>
+                        <div className="all-products-info">
+                          <div className="bs-card-tags">
+                            {p.tags.map((t, j) => (
+                              <span key={j} className={`bs-tag ${t === "Halal" ? "bs-tag-orange" : ""}`}>{t}</span>
+                            ))}
+                          </div>
+                          <p className="all-products-name">{p.name}</p>
+                          <p className="all-products-desc">{p.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       )}
 
-      {/* BANNER SLIDER */}
-      <section id="home" className="slider">
-        {SLIDES.map((s, i) => (
-          <div
-            key={i}
-            className={`slide ${i === current ? "active" : ""}`}
-            style={{ backgroundImage: `url(${s.bg})` }}
-          >
-            <div className="slide-overlay" />
-            <div className="slide-content">
-              <h1>{s.title}</h1>
-              <p>{s.sub}</p>
-              <button className="btn-cta" onClick={() => scrollTo("spices")}>
-                Explore Spices
-              </button>
-            </div>
+      {/* FEATURED PRODUCT — CHAI MACHINE */}
+      <section className="fp-section">
+        {/* LEFT — dark panel with glow */}
+        <div className="fp-left">
+          <div className="fp-glow" />
+          <span className="fp-sparkle fp-sparkle-1">✦</span>
+          <span className="fp-sparkle fp-sparkle-2">✦</span>
+          <span className="fp-sparkle fp-sparkle-3">✦</span>
+          <div className="fp-img-wrap">
+            <img src="/Chai machine 1.png" alt="Chai Machine" className="fp-img" />
           </div>
-        ))}
-        <div className="slider-dots">
-          {SLIDES.map((_, i) => (
-            <button
-              key={i}
-              className={`dot ${i === current ? "active" : ""}`}
-              onClick={() => goTo(i)}
-            />
-          ))}
-        </div>
-        <button
-          className="slider-arrow left"
-          onClick={() => goTo((current - 1 + SLIDES.length) % SLIDES.length)}
-        >
-          &#8249;
-        </button>
-        <button
-          className="slider-arrow right"
-          onClick={() => goTo((current + 1) % SLIDES.length)}
-        >
-          &#8250;
-        </button>
-      </section>
-
-      {/* SPICES LISTING */}
-      <section id="spices" className="section spices-section">
-        <div className="section-tag">Our Collection</div>
-        <h2 className="section-title">Premium Spices</h2>
-        <p className="section-sub">
-          Hand-picked, sun-dried, and packed with flavour
-        </p>
-
-        <div className="spices-slider-outer">
-          <button className="sc-arrow-side" onClick={spicePrev}>
-            &#8249;
-          </button>
-
-          <div className="spices-slider-wrap">
-            {/* 
-              CLONED = [last3, ...SPICES(8), first3] = 14 items
-              spiceIdx goes 0..7 (maps to SPICES[0..7])
-              center card in CLONED = spiceIdx + CLONE_COUNT
-              translateX so center card is in middle slot:
-                offset = (centerInCloned - 1) * cardWidth
-                       = (spiceIdx + CLONE_COUNT - 1) * (100/3)%
-            */}
-            <div
-              className="spices-track"
-              ref={trackRef}
-              onTransitionEnd={handleTrackTransitionEnd}
-              style={{
-                transform: `translateX(-${(spiceIdx + CLONE_COUNT - 1) * (isMobile ? 100 : 100 / 3)}%)`,
-              }}
-            >
-              {CLONED.map((s, i) => {
-                const centerInCloned = spiceIdx + CLONE_COUNT;
-                const isCenter = isMobile ? i === centerInCloned : i === centerInCloned;
-                return (
-                  <div
-                    className={`spice-card ${isCenter ? "active" : ""}`}
-                    key={i}
-                    style={{ "--accent": s.accent }}
-                  >
-                    <div className="spice-blob-wrap">
-                      <BlobSVG color={s.accent} />
-                      <img src={s.img} alt={s.name} className="spice-img" />
-                    </div>
-                    <h3>{s.name}</h3>
-                    <div className="spice-tags">
-                      <span className="spice-tag">✔ {s.heat} Heat</span>
-                      <span className="spice-tag">✔ Pure</span>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          <button className="sc-arrow-side" onClick={spiceNext}>
-            &#8250;
-          </button>
         </div>
 
-        <div className="spices-controls">
-          <div className="sc-dots">
-            {SPICES.map((_, i) => (
-              <span
-                key={i}
-                className={`sc-dot ${((spiceIdx % SPICES.length) + SPICES.length) % SPICES.length === i ? "active" : ""}`}
-                onClick={() => setSpiceIdx(i)}
-              />
-            ))}
+        {/* RIGHT — cream panel */}
+        <div className="fp-right">
+          <span className="fp-eyebrow">Featured Product</span>
+          <h2 className="fp-title">
+            Chai Machine —<br />
+            <em>Prebook Now</em>
+          </h2>
+          <p className="fp-desc">
+            Built for North America with 110V compatibility. Perfectly brewed chai every time. Free GTA delivery on prebook.
+          </p>
+          <div className="fp-badges">
+            <span className="fp-badge"><span className="fp-badge-dot" />110V Canada Ready</span>
+            <span className="fp-badge"><span className="fp-badge-dot" />Free GTA Delivery</span>
+            <span className="fp-badge"><span className="fp-badge-dot" />Halal</span>
           </div>
-          <button className="btn-view-all">View All ›</button>
+          <button className="fp-btn">Prebook Now →</button>
         </div>
       </section>
 
@@ -602,41 +696,35 @@ export default function App() {
       </section>
 
       {/* WHAT'S NEW */}
-      <section id="whatsnew" className="whatsnew-section">
-        <div className="whatsnew-header">
-          <div className="section-tag">What's New</div>
-          <h2 className="whatsnew-title">The World of Papaji</h2>
-          <button className="btn-view-more" onClick={() => openSlide(activeNews)}>View More ›</button>
+      <section id="whatsnew" className="wn-section">
+        <div className="wn-header">
+          <div>
+            <span className="wn-eyebrow">What's New</span>
+            <h2 className="wn-title">The World of <em>Papaji Foods</em></h2>
+          </div>
+          <button className="wn-view-more" onClick={() => openSlide(NEWS_ITEMS[0])}>View More →</button>
         </div>
 
-        <div className="whatsnew-body">
-          {/* Main card */}
-          <div className="whatsnew-card" onClick={() => openSlide(activeNews)}>
-            <div className="whatsnew-card-img">
-              <img src={activeNews.img} alt={activeNews.title} />
-              <div className="whatsnew-card-overlay" style={{ background: `linear-gradient(to right, ${activeNews.accent}cc, transparent)` }} />
+        <div className="wn-grid">
+          {NEWS_ITEMS.map((item, i) => (
+            <div
+              key={i}
+              className={`wn-card ${i === 0 ? "wn-card-featured" : ""}`}
+              onClick={() => openSlide(item)}
+            >
+              <div className="wn-card-icon">
+                {i === 2
+                  ? <span className="wn-new-badge">NEW</span>
+                  : <span className="wn-icon">{item.icon}</span>
+                }
+              </div>
+              <div className="wn-card-body">
+                <span className="wn-category">{item.category}</span>
+                <span className="wn-date">{item.date}</span>
+                <h3 className="wn-card-title">{item.title}</h3>
+              </div>
             </div>
-            <div className="whatsnew-card-content">
-              <span className="whatsnew-date">{activeNews.date}</span>
-              <h3>{activeNews.title}</h3>
-              <p>{activeNews.desc}</p>
-              <button className="btn-read-more">Read More ›</button>
-            </div>
-          </div>
-
-          {/* Vertical tabs */}
-          <div className="whatsnew-tabs">
-            {NEWS_TABS.map((tab, i) => (
-              <button
-                key={i}
-                className={`whatsnew-tab ${i === activeTab ? 'active' : ''}`}
-                style={{ '--tab-color': NEWS_ITEMS[i].accent }}
-                onClick={(e) => { e.stopPropagation(); setActiveTab(i) }}
-              >
-                <span>{tab}</span>
-              </button>
-            ))}
-          </div>
+          ))}
         </div>
       </section>
 
@@ -658,30 +746,14 @@ export default function App() {
         </div>
       </section>
 
-      {/* MARQUEE TICKER */}
-      <div className="marquee-strip">
-        <div className="marquee-track">
-          {[...Array(3)].map((_, ri) =>
-            ['Spices', 'Sauces', 'Masala Blends', 'Chai', 'Mayo', 'Schezwan', 'Chutneys', 'Seasonings'].map((item, i) => (
-              <span key={`${ri}-${i}`} className="marquee-item">
-                <span className="marquee-dot" />
-                {item.toUpperCase()}
-              </span>
-            ))
-          )}
-        </div>
-      </div>
-
       {/* SLIDE PANEL */}
       {slideOpen && slideItem && (
         <div className="slide-panel-overlay" onClick={closeSlide}>
           <div className="slide-panel" onClick={e => e.stopPropagation()}>
             <button className="slide-panel-close" onClick={closeSlide}>✕</button>
-            <div className="slide-panel-img">
-              <img src={slideItem.img} alt={slideItem.title} />
-            </div>
-            <div className="slide-panel-body">
-              <span className="whatsnew-date">{slideItem.date}</span>
+            <div className="slide-panel-body" style={{ paddingTop: '48px' }}>
+              <span className="wn-category">{slideItem.category}</span>
+              <span className="wn-date" style={{ display: 'block', marginTop: '4px', marginBottom: '12px' }}>{slideItem.date}</span>
               <h2>{slideItem.title}</h2>
               <p className="slide-panel-desc">{slideItem.desc}</p>
               <div className="slide-panel-slides">
@@ -697,39 +769,41 @@ export default function App() {
         </div>
       )}
 
-      {/* CONTACT */}
-      <section id="contact" className="section contact-section">
-        <div className="section-tag">Get In Touch</div>
-        <h2 className="section-title">Contact Us</h2>
-        <p className="section-sub">We'd love to hear from you</p>
-        <div className="contact-inner">
-          <div className="contact-info">
-            <div className="contact-item">
-              <span>📍</span>
-              <p>123 Spice Market, Old Delhi, India</p>
-            </div>
-            <div className="contact-item">
-              <span>📞</span>
-              <p>+91 98765 43210</p>
-            </div>
-            <div className="contact-item">
-              <span>✉️</span>
-              <p>hello@papaji.in</p>
-            </div>
-            <div className="contact-item">
-              <span>🕐</span>
-              <p>Mon–Sat: 9am – 6pm IST</p>
-            </div>
+      {/* NEWSLETTER / CONTACT */}
+      <section id="contact" className="newsletter-section">
+        {/* rotating mandala decoration */}
+        <div className="newsletter-mandala" aria-hidden="true" />
+
+        <div className="newsletter-inner">
+          {/* LEFT */}
+          <div className="newsletter-left">
+            <span className="newsletter-eyebrow">Stay In Touch</span>
+            <h2 className="newsletter-heading">
+              Spice Up<br />
+              Your <em>Inbox</em>
+            </h2>
+            <p className="newsletter-sub">
+              Get exclusive recipes, new launches and offers delivered to you.
+            </p>
           </div>
-          <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
-            <input type="text" placeholder="Your Name" required />
-            <input type="email" placeholder="Email Address" required />
-            <input type="text" placeholder="Subject" />
-            <textarea placeholder="Your message..." rows="4" required />
-            <button type="submit" className="btn-submit">
-              Send Message
-            </button>
-          </form>
+
+          {/* RIGHT */}
+          <div className="newsletter-right">
+            <form className="newsletter-form" onSubmit={(e) => e.preventDefault()}>
+              <input
+                type="email"
+                className="newsletter-input"
+                placeholder="your@email.com"
+                required
+              />
+              <button type="submit" className="newsletter-btn">
+                Subscribe →
+              </button>
+            </form>
+            <p className="newsletter-disclaimer">
+              *I'd like to receive updates from Papaji Foods. Unsubscribe anytime.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -739,7 +813,8 @@ export default function App() {
           <div className="footer-brand">
             <div className="logo">
               <span className="logo-text">Papaji</span>
-              <span className="logo-caption">foods</span>
+              <span className="logo-dot">.</span>
+              <span className="logo-caption">Foods</span>
             </div>
             <p>
               Bringing the authentic taste of India to your kitchen since 1994.
@@ -779,7 +854,7 @@ export default function App() {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>© 2026 Papaji. All rights reserved. Made with ❤️ in India.</p>
+          <p>© 2026 Papaji Foods · Mississauga, Ontario, Canada</p>
         </div>
       </footer>
     </div>
