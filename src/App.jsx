@@ -130,6 +130,13 @@ const NEWS_ITEMS = [
   },
 ]
 
+const PRODUCTS = [
+  { name: 'Schezwan Sauce',   img: '/Schezwan-Sauce.jpg',                        bg: '#c2410c', tag: 'Bold & Fiery' },
+  { name: 'Masala Chai',      img: '/Masala-Chai-Icon.jpg',                      bg: '#92400e', tag: 'Warm & Aromatic' },
+  { name: 'Flavoured Mayo',   img: '/Flavoured-Mayo-Style-Sauce-300g.jpeg',      bg: '#1e3a5f', tag: 'Creamy & Rich' },
+  { name: 'Garam Masala',     img: '/Gemini_Generated_Image_o334b7o334b7o334.png', bg: '#14532d', tag: 'Classic Blend' },
+]
+
 const BlobSVG = ({ color }) => (
   <svg
     viewBox="0 0 200 200"
@@ -622,6 +629,24 @@ export default function App() {
               </button>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* PRODUCTS YOU LOVE */}
+      <section className="pyl-section">
+        <h2 className="pyl-heading">PRODUCTS YOU LOVE</h2>
+        <div className="pyl-grid">
+          {PRODUCTS.map((p, i) => (
+            <div className="pyl-card" key={i} style={{ background: p.bg }}>
+              <div className="pyl-img-wrap">
+                <img src={p.img} alt={p.name} className="pyl-img" />
+              </div>
+              <div className="pyl-card-footer">
+                <span className="pyl-name">{p.name.toUpperCase()}</span>
+                <button className="pyl-arrow">›</button>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
