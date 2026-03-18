@@ -7,7 +7,7 @@ const HERO_PRODUCTS = [
     nameLast: "Chai",
     bgWord: "CHAI",
     tag: "PREMIUM PREMIX — 200G",
-    img: "/Cardamom-Milk-Icon.jpg",
+    img: "/chai/3-removebg-preview.png",
     badges: ["Vegan", "Halal", "Canada"],
   },
   {
@@ -15,7 +15,7 @@ const HERO_PRODUCTS = [
     nameLast: "Chai",
     bgWord: "CHAI",
     tag: "PREMIUM PREMIX — 200G",
-    img: "/Masala-Chai-Icon.jpg",
+    img: "/chai/9-removebg-preview.png",
     badges: ["Vegan", "Halal", "Canada"],
   },
   {
@@ -23,7 +23,7 @@ const HERO_PRODUCTS = [
     nameLast: "Sauce",
     bgWord: "SAUCE",
     tag: "SIGNATURE SAUCE — 300G",
-    img: "/Schezwan-Sauce-New.jpg",
+    img: "/sauce/2.png",
     badges: ["Vegan", "Halal", "Canada"],
   },
   {
@@ -31,7 +31,7 @@ const HERO_PRODUCTS = [
     nameLast: "Mayo",
     bgWord: "MAYO",
     tag: "CREAMY CONDIMENT — 250G",
-    img: "/Tandoori-Mayo-Icon.jpg",
+    img: "/mayo/6-removebg-preview.png",
     badges: ["Halal", "Canada"],
   },
 ];
@@ -43,42 +43,42 @@ const BESTSELLERS = [
   {
     name: "Cardamom Chai Premix",
     desc: "Rich aromatic cardamom — restaurant quality at home.",
-    img: "/Cardamom-Milk-Icon.jpg",
+    img: "/chai/3-removebg-preview.png",
     tags: ["Vegan", "Halal"],
     category: ["All", "Chai", "Vegan", "Halal"],
   },
   {
     name: "Masala Chai Premix",
     desc: "Bold warming spices — the classic Indian chai blend.",
-    img: "/Masala-Chai-Icon.jpg",
+    img: "/chai/9-removebg-preview.png",
     tags: ["Vegan", "GF"],
     category: ["Chai", "Vegan"],
   },
   {
     name: "Kadak Chai",
     desc: "Strong, full-bodied chai for the true chai lover.",
-    img: "/Kadak-Chai-Icon.jpg",
+    img: "/chai/6-removebg-preview.png",
     tags: ["Vegan", "GF"],
     category: ["Chai", "Vegan"],
   },
   {
     name: "Zafrani Chai",
     desc: "Saffron-infused premium chai — rich and aromatic.",
-    img: "/Zafrani-Chai-Icon.jpg",
+    img: "/chai/8-removebg-preview.png",
     tags: ["Vegan", "Halal"],
     category: ["Chai", "Vegan", "Halal"],
   },
   {
     name: "Pink Chai",
     desc: "Kashmiri noon chai — delicate, floral and creamy.",
-    img: "/Pink-Tea-Icon.jpg",
+    img: "/chai/10-removebg-preview.png",
     tags: ["Vegan"],
     category: ["Chai", "Vegan"],
   },
   {
     name: "Ginger Cardamom Chai",
     desc: "Zesty ginger meets fragrant cardamom in every sip.",
-    img: "/Ginger-Cardamom-Icon.jpg",
+    img: "/chai/4-removebg-preview.png",
     tags: ["Vegan", "Halal"],
     category: ["Chai", "Vegan", "Halal"],
   },
@@ -86,7 +86,14 @@ const BESTSELLERS = [
   {
     name: "Schezwan Sauce",
     desc: "Fiery Indo-Chinese. 1kg food service pack.",
-    img: "/Schezwan-Sauce-New.jpg",
+    img: "/sauce/2.png",
+    tags: ["Vegan", "Halal"],
+    category: ["All", "Sauces", "Vegan", "Halal"],
+  },
+  {
+    name: "Chilli Garlic Sauce",
+    desc: "Fiery Indo-Chinese. 1kg food service pack.",
+    img: "/sauce/1.png",
     tags: ["Vegan", "Halal"],
     category: ["All", "Sauces", "Vegan", "Halal"],
   },
@@ -94,42 +101,42 @@ const BESTSELLERS = [
   {
     name: "Tandoori Mayo",
     desc: "Smoky spiced mayo — perfect for wraps & dips.",
-    img: "/Tandoori-Mayo-Icon.jpg",
+    img: "/mayo/6-removebg-preview.png",
     tags: ["Halal"],
     category: ["All", "Mayo", "Halal"],
   },
   {
     name: "Peri Peri Mayo",
     desc: "Tangy, fiery peri peri — great for grills & burgers.",
-    img: "/Peri-Peri-Mayo-Icon.jpg",
+    img: "/mayo/3-removebg-preview.png",
     tags: ["Halal"],
     category: ["Mayo", "Halal"],
   },
   {
     name: "Jalapeño Mayo",
     desc: "Cool heat of jalapeño in a creamy mayo base.",
-    img: "/Jalapeno-Mayo-Icon.jpg",
+    img: "/mayo/4-removebg-preview.png",
     tags: ["Halal"],
     category: ["Mayo", "Halal"],
   },
   {
     name: "Achari Mayo",
     desc: "Tangy pickle-spiced mayo — uniquely Indian.",
-    img: "/Achari-May-Icon.jpg",
+    img: "/mayo/2-removebg-preview.png",
     tags: ["Halal"],
     category: ["Mayo", "Halal"],
   },
   {
     name: "Vegan Plain Mayo",
     desc: "100% plant-based creamy mayo — clean and simple.",
-    img: "/Vegan-Plain-Mayo-Icon.jpg",
+    img: "/mayo/5-removebg-preview.png",
     tags: ["Vegan"],
     category: ["Mayo", "Vegan"],
   },
   {
     name: "Italian Herb & Garlic",
     desc: "Herb-infused mayo with roasted garlic notes.",
-    img: "/Italian-Herb-and-Garlic-Icon.jpg",
+    img: "/mayo/1.png",
     tags: ["Vegan"],
     category: ["Mayo", "Vegan"],
   },
@@ -181,10 +188,11 @@ const NEWS_ITEMS = [
 ]
 
 const PRODUCTS = [
-  { name: 'Schezwan Sauce',   img: '/Schezwan-Sauce.jpg',                        bg: '#c2410c', tag: 'Bold & Fiery' },
-  { name: 'Masala Chai',      img: '/Masala-Chai-Icon.jpg',                      bg: '#92400e', tag: 'Warm & Aromatic' },
-  { name: 'Flavoured Mayo',   img: '/Flavoured-Mayo-Style-Sauce-300g.jpeg',      bg: '#1e3a5f', tag: 'Creamy & Rich' },
-  { name: 'Garam Masala',     img: '/Gemini_Generated_Image_o334b7o334b7o334.png', bg: '#14532d', tag: 'Classic Blend' },
+  { name: 'Schezwan Sauce',   img: '/sauce/2.png',   bg: '#7B2D8B', tag: 'Bold & Fiery',    label: 'Sauce' },
+  { name: 'Masala Chai',      img: '/chai/9-removebg-preview.png',   bg: '#29A8D4', tag: 'Warm & Aromatic', label: 'Chai' },
+  { name: 'Tandoori Mayo',    img: '/mayo/6-removebg-preview.png',   bg: '#C2410C', tag: 'Smoky & Creamy',  label: 'Mayo' },
+  { name: 'Peri Peri Mayo',   img: '/mayo/3-removebg-preview.png',   bg: '#E6A800', tag: 'Tangy & Fiery',   label: 'Mayo' },
+  { name: 'Cardamom Chai',    img: '/chai/3-removebg-preview.png',   bg: '#16A34A', tag: 'Rich & Aromatic', label: 'Chai' },
 ]
 
 const BlobSVG = ({ color }) => (
@@ -206,6 +214,8 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState("All");
   const [showAllProducts, setShowAllProducts] = useState(false);
+  const [carouselIdx, setCarouselIdx] = useState(0);
+  const [pylIdx, setPylIdx] = useState(0);
   const [slideOpen, setSlideOpen] = useState(false)
   const [slideItem, setSlideItem] = useState(null)
 
@@ -234,23 +244,6 @@ export default function App() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setMenuOpen(false);
   };
-
-  // Scroll reveal for bestseller cards
-  useEffect(() => {
-    const cards = document.querySelectorAll('.bs-card');
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach((e) => {
-        if (e.isIntersecting) {
-          const idx = Array.from(cards).indexOf(e.target);
-          setTimeout(() => e.target.classList.add('revealed'), idx * 100);
-          observer.unobserve(e.target);
-        }
-      }),
-      { threshold: 0.15 }
-    );
-    cards.forEach((c) => observer.observe(c));
-    return () => observer.disconnect();
-  }, [activeFilter]);
 
   // Scroll-triggered animations
   useEffect(() => {
@@ -431,50 +424,92 @@ export default function App() {
           <button className="bs-view-all" onClick={() => setShowAllProducts(true)}>View All Products →</button>
         </div>
 
-        {/* filter pills */}
+        {/* filter tabs */}
         <div className="bs-filters">
           {FILTER_TABS.map((f) => (
             <button
               key={f}
               className={`bs-filter ${activeFilter === f ? "active" : ""}`}
-              onClick={() => setActiveFilter(f)}
+              onClick={() => { setActiveFilter(f); setCarouselIdx(0); }}
             >
               {f}
             </button>
           ))}
         </div>
 
-        {/* product grid — max 3 per category */}
-        <div className="bs-grid">
-          {BESTSELLERS
-            .filter(p => p.category.includes(activeFilter))
-            .slice(0, 3)
-            .map((p, i) => (
-              <div className="bs-card" key={`${activeFilter}-${i}`}>
-                <div className="bs-card-img">
-                  <img src={p.img} alt={p.name} />
-                </div>
-                <div className="bs-card-body">
-                  <div className="bs-card-tags">
-                    {p.tags.map((t, j) => (
-                      <span key={j} className={`bs-tag ${t === "Halal" ? "bs-tag-orange" : ""}`}>{t}</span>
-                    ))}
-                  </div>
-                  <h3 className="bs-card-name">{p.name}</h3>
-                  <p className="bs-card-desc">{p.desc}</p>
-                  <a href="#" className="bs-card-link">View Product →</a>
+        {/* carousel */}
+        {(() => {
+          const filtered = BESTSELLERS.filter(p => p.category.includes(activeFilter));
+          const visible = 3;
+          const maxIdx = Math.max(0, filtered.length - visible);
+          const centerIdx = carouselIdx + 1; // middle of the 3 visible
+
+          const BlobSVG = () => (
+            <svg className="bs-blob-svg" viewBox="136 271 537 537" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#E65300" d="M 654.972656 499.960938 C 655.082031 491.914062 653.792969 483.867188 650.894531 476.464844 C 646.175781 464.660156 637.054688 451.359375 616.777344 448.246094 C 627.078125 432.582031 624.179688 417.558594 619.351562 406.402344 C 616.242188 399.105469 611.414062 392.5625 605.617188 386.875 C 583.195312 364.878906 592.527344 347.820312 592.527344 347.820312 C 592.527344 347.820312 575.46875 357.15625 553.476562 334.730469 C 547.789062 328.9375 541.242188 324.214844 533.949219 320.996094 C 522.359375 315.953125 506.375 313.058594 489.851562 325.179688 C 485.988281 306.835938 473.328125 298.25 462.167969 293.746094 C 454.765625 290.847656 446.71875 289.558594 438.671875 289.667969 C 407.234375 289.988281 401.761719 271.429688 401.761719 271.429688 C 401.761719 271.429688 396.289062 290.097656 364.960938 289.773438 C 356.914062 289.667969 348.867188 290.953125 341.464844 293.851562 C 329.660156 298.574219 316.359375 307.691406 313.246094 327.972656 C 297.582031 317.671875 282.5625 320.566406 271.402344 325.394531 C 264.105469 328.507812 257.5625 333.335938 251.875 339.128906 C 229.878906 361.445312 212.820312 352.113281 212.820312 352.113281 C 212.820312 352.113281 222.15625 369.171875 199.730469 391.167969 C 193.9375 396.851562 189.214844 403.398438 185.996094 410.695312 C 180.953125 422.28125 178.058594 438.269531 190.179688 454.789062 C 171.835938 458.652344 163.25 471.3125 158.746094 482.472656 C 155.847656 489.875 154.558594 497.921875 154.667969 505.96875 C 154.882812 537.300781 136.320312 542.769531 136.320312 542.769531 C 136.320312 542.769531 154.988281 548.242188 154.667969 579.574219 C 154.558594 587.621094 155.847656 595.667969 158.746094 603.070312 C 163.464844 614.871094 172.585938 628.175781 192.863281 631.289062 C 182.5625 646.953125 185.460938 661.972656 190.289062 673.132812 C 193.398438 680.425781 198.230469 686.972656 204.023438 692.660156 C 226.445312 714.652344 217.113281 731.714844 217.113281 731.714844 C 217.113281 731.714844 234.171875 722.378906 256.167969 744.804688 C 261.851562 750.597656 268.398438 755.316406 275.695312 758.535156 C 287.28125 763.578125 303.269531 766.476562 319.792969 754.351562 C 323.652344 772.699219 336.3125 781.28125 347.578125 785.789062 C 354.984375 788.6875 363.03125 789.972656 371.078125 789.867188 C 402.40625 789.652344 407.878906 808.214844 407.878906 808.214844 C 407.878906 808.214844 413.351562 789.652344 444.679688 789.867188 C 452.726562 789.972656 460.773438 788.6875 468.175781 785.789062 C 479.980469 781.066406 493.285156 771.949219 496.394531 751.667969 C 512.058594 761.96875 527.082031 759.074219 538.238281 754.246094 C 545.535156 751.132812 552.078125 746.304688 557.765625 740.511719 C 579.761719 718.085938 596.820312 727.421875 596.820312 727.421875 C 596.820312 727.421875 587.488281 710.363281 609.910156 688.367188 C 615.703125 682.679688 620.425781 676.136719 623.644531 668.839844 C 628.6875 657.253906 631.582031 641.265625 619.460938 624.742188 C 637.808594 620.878906 646.390625 608.21875 650.894531 596.953125 C 653.792969 589.550781 655.082031 581.503906 654.972656 573.457031 C 654.757812 542.128906 673.320312 536.65625 673.320312 536.65625 C 673.320312 536.65625 654.652344 531.398438 654.972656 499.960938 Z" />
+            </svg>
+          );
+
+          return (
+            <>
+              <div className="bs-carousel-wrap">
+                <div
+                  className="bs-carousel"
+                  style={{ transform: `translateX(calc(-${carouselIdx} * var(--bs-item-w)))` }}
+                >
+                  {filtered.map((p, i) => (
+                    <div
+                      className={`bs-item ${i === centerIdx ? "bs-item-center" : ""}`}
+                      key={`${activeFilter}-${i}`}
+                    >
+                      <div className="bs-blob" aria-hidden="true">
+                        <BlobSVG />
+                      </div>
+                      <div className="bs-item-img">
+                        <img src={p.img} alt={p.name} />
+                      </div>
+                      <h3 className="bs-item-name">{p.name.toUpperCase()}</h3>
+                      <div className="bs-item-tags">
+                        {p.tags.map((t, j) => (
+                          <span key={j} className={`bs-item-tag ${t === "Halal" ? "bs-item-tag-orange" : t === "Vegan" ? "bs-item-tag-green" : ""}`}>
+                            <span className="bs-item-dot" />
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
-        </div>
 
-        {/* show count hint */}
-        {BESTSELLERS.filter(p => p.category.includes(activeFilter)).length > 3 && (
-          <div className="bs-more-hint">
-            +{BESTSELLERS.filter(p => p.category.includes(activeFilter)).length - 3} more in this category —{" "}
-            <button className="bs-more-link" onClick={() => setShowAllProducts(true)}>View All</button>
-          </div>
-        )}
+              {/* pagination bar */}
+              <div className="bs-pagination">
+                <button
+                  className="bs-pag-arrow"
+                  onClick={() => setCarouselIdx(i => Math.max(0, i - 1))}
+                  disabled={carouselIdx === 0}
+                >‹</button>
+                <div className="bs-pag-dots">
+                  {filtered.map((_, i) => (
+                    <button
+                      key={i}
+                      className={`bs-pag-dot ${i === carouselIdx ? "active" : ""}`}
+                      onClick={() => setCarouselIdx(Math.min(i, maxIdx))}
+                    />
+                  ))}
+                </div>
+                <button
+                  className="bs-pag-arrow"
+                  onClick={() => setCarouselIdx(i => Math.min(maxIdx, i + 1))}
+                  disabled={carouselIdx >= maxIdx}
+                >›</button>
+                <button className="bs-pag-viewall" onClick={() => setShowAllProducts(true)}>
+                  View All <span className="bs-pag-count">{filtered.length}</span>
+                </button>
+              </div>
+            </>
+          );
+        })()}
       </section>
 
       {/* ALL PRODUCTS MODAL */}
@@ -526,7 +561,7 @@ export default function App() {
           <span className="fp-sparkle fp-sparkle-2">✦</span>
           <span className="fp-sparkle fp-sparkle-3">✦</span>
           <div className="fp-img-wrap">
-            <img src="/Chai machine 1.png" alt="Chai Machine" className="fp-img" />
+            <img src="/3d final image ion.png" alt="Chai Machine" className="fp-img" />
           </div>
         </div>
 
@@ -728,22 +763,92 @@ export default function App() {
         </div>
       </section>
 
+      {/* RECIPES */}
+      <section className="recipes-section">
+        <div className="recipes-header">
+          <div>
+            <span className="recipes-eyebrow">Recipes</span>
+            <h2 className="recipes-title">From Our Kitchen <em>To Yours</em></h2>
+          </div>
+          <button className="recipes-view-more">View More →</button>
+        </div>
+
+        {(() => {
+          const RECIPES = [
+            { time: "15 min", diet: "Veg",   title: "Tandoori Mayo Paneer Wrap",  desc: "Grilled paneer in Papaji mayo, warm roti, fresh veggies.", emoji: "🌯" },
+            { time: "20 min", diet: "Vegan", title: "Schezwan Noodles",           desc: "Bold Indo-Chinese toss with Papaji Schezwan sauce.",      emoji: "🍜" },
+            { time: "5 min",  diet: "Vegan", title: "Iced Cardamom Chai",         desc: "Brew, chill, pour over ice with oat milk.",               emoji: "🧋" },
+          ];
+          return (
+            <div className="rc-grid">
+              {RECIPES.map((r, i) => (
+                <div className="rc-card-new" key={i}>
+                  <div className="rc-card-top">
+                    <span className="rc-emoji-new">{r.emoji}</span>
+                  </div>
+                  <div className="rc-card-bottom">
+                    <div className="rc-meta">
+                      <span className="rc-meta-time">⏱ {r.time}</span>
+                      <span className="rc-meta-diet">🌿 {r.diet}</span>
+                    </div>
+                    <h3 className="rc-card-title-new">{r.title}</h3>
+                    <p className="rc-card-desc">{r.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          );
+        })()}
+      </section>
+
       {/* PRODUCTS YOU LOVE */}
       <section className="pyl-section">
-        <h2 className="pyl-heading">PRODUCTS YOU LOVE</h2>
-        <div className="pyl-grid">
-          {PRODUCTS.map((p, i) => (
-            <div className="pyl-card" key={i} style={{ background: p.bg }}>
-              <div className="pyl-img-wrap">
-                <img src={p.img} alt={p.name} className="pyl-img" />
-              </div>
-              <div className="pyl-card-footer">
-                <span className="pyl-name">{p.name.toUpperCase()}</span>
-                <button className="pyl-arrow">›</button>
-              </div>
-            </div>
-          ))}
+        <div className="pyl-header">
+          <div>
+            <span className="pyl-eyebrow">Our Range</span>
+            <h2 className="pyl-title">Products <em>You Love</em></h2>
+          </div>
         </div>
+
+        {(() => {
+          const centerIdx = pylIdx + 1;
+          const maxIdx = Math.max(0, PRODUCTS.length - 3);
+          return (
+            <>
+              <div className="pyl-carousel-wrap">
+                <div className="pyl-carousel" style={{ transform: `translateX(calc(-${pylIdx} * (var(--pyl-item-w) + 16px)))` }}>
+                  {PRODUCTS.map((p, i) => (
+                    <div className={`pyl-card ${i === centerIdx ? "pyl-card-center" : ""}`} key={i} style={{ "--pyl-bg": p.bg }}>
+                      {/* photo fills top */}
+                      <div className="pyl-card-photo">
+                        <img src={p.img} alt={p.name} />
+                      </div>
+                      {/* colored body */}
+                      <div className="pyl-card-body" style={{ background: p.bg }}>
+                        <div className="pyl-card-tag">
+                          <span className="pyl-tag-dot" />{p.tag}
+                        </div>
+                        <h3 className="pyl-card-name">{p.name.toUpperCase()}</h3>
+                        <button className="pyl-shop-btn">
+                          Shop Now <span className="pyl-btn-icon">›</span>
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="pyl-pagination">
+                <button className="pyl-pag-arrow" onClick={() => setPylIdx(i => Math.max(0, i - 1))} disabled={pylIdx === 0}>‹</button>
+                <div className="pyl-pag-dots">
+                  {PRODUCTS.map((_, i) => (
+                    <button key={i} className={`pyl-pag-dot ${i === pylIdx ? "active" : ""}`} onClick={() => setPylIdx(Math.min(i, maxIdx))} />
+                  ))}
+                </div>
+                <button className="pyl-pag-arrow" onClick={() => setPylIdx(i => Math.min(maxIdx, i + 1))} disabled={pylIdx >= maxIdx}>›</button>
+              </div>
+            </>
+          );
+        })()}
       </section>
 
       {/* SLIDE PANEL */}
