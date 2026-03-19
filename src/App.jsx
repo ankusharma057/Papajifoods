@@ -584,6 +584,45 @@ export default function App() {
         </div>
       </section>
 
+      {/* DELIVERY MARQUEE */}
+      <div className="delivery-marquee-strip">
+        <div className="delivery-marquee-track">
+          {[...Array(5)].map((_, i) => (
+            <span key={i} className="delivery-marquee-item">
+              <span className="delivery-marquee-badge">NEW</span>
+              <span className="delivery-marquee-leaf">✿</span>
+              Free delivery across GTA on orders $49+
+              <a href="#" className="delivery-marquee-link">Shop Now →</a>
+              <span className="delivery-marquee-sep">·</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* PAPER PLANE — before about */}
+      <div className="plane-divider plane-divider-before" aria-hidden="true">
+        <svg viewBox="0 0 1400 80" className="plane-divider-svg" xmlns="http://www.w3.org/2000/svg">
+          <path className="plane-dash-path" d="M0,55 C180,20 360,70 560,40 C720,18 860,55 1050,35 C1180,22 1300,45 1400,38" />
+          {/* plane 1 */}
+          <text fontSize="50" fill="#E6C800" dominantBaseline="middle">
+            ✈
+            <animateMotion dur="8s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#wavePath1" />
+            </animateMotion>
+          </text>
+          {/* plane 2 — delayed */}
+          <text fontSize="20" fill="#E6C800" dominantBaseline="middle" opacity="0.85">
+            ✈
+            <animateMotion dur="8s" begin="4s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#wavePath1" />
+            </animateMotion>
+          </text>
+          <defs>
+            <path id="wavePath1" d="M0,55 C180,20 360,70 560,40 C720,18 860,55 1050,35 C1180,22 1300,45 1400,38" />
+          </defs>
+        </svg>
+      </div>
+
       {/* ABOUT US */}
       <section id="about" className="about-section">
         {/* ROW 1 — left image, right content */}
@@ -730,6 +769,28 @@ export default function App() {
         </div>
       </section>
 
+      {/* PAPER PLANE DIVIDER — after about */}
+      <div className="plane-divider plane-divider-after" aria-hidden="true">
+        <svg viewBox="0 0 1400 80" className="plane-divider-svg" xmlns="http://www.w3.org/2000/svg">
+          <path className="plane-dash-path" d="M0,28 C260,38 380,65 540,70 C700,74 860,52 1050,44 C1200,37 1320,42 1400,40" />
+          {/* single plane flying along the curve */}
+          <text fontSize="30" fill="#E6C800" dominantBaseline="middle">
+            ✈
+            <animateMotion dur="10s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#curvePath2" />
+            </animateMotion>
+          </text>
+          <defs>
+            <path id="curvePath2" d="M0,28 C260,38 380,65 540,70 C700,74 860,52 1050,44 C1200,37 1320,42 1400,40" />
+          </defs>
+        </svg>
+      </div>
+
+      {/* PREMIX BANNER */}
+      <div className="premix-banner">
+        <img src="/21Website-Banner-2-Machine-and-Premixes-.jpg" alt="Tea & Coffee Premix — Papaji Foods" className="premix-banner-img" />
+      </div>
+
       {/* WHAT'S NEW */}
       <section id="whatsnew" className="wn-section">
         <div className="wn-header">
@@ -741,23 +802,21 @@ export default function App() {
         </div>
 
         <div className="wn-grid">
-          {NEWS_ITEMS.map((item, i) => (
-            <div
-              key={i}
-              className={`wn-card ${i === 0 ? "wn-card-featured" : ""}`}
-              onClick={() => openSlide(item)}
-            >
-              <div className="wn-card-icon">
-                {i === 2
-                  ? <span className="wn-new-badge">NEW</span>
-                  : <span className="wn-icon">{item.icon}</span>
-                }
+          {[
+            { img: "/chai/9-removebg-preview.png",      tag: "Latest News",      title: "Papaji Expands Across Canada",       desc: "Now in 500+ retail locations nationwide." },
+            { img: "/3d final image ion.png",    tag: "Company Updates",  title: "New Chai Machine Partnership",       desc: "200+ hospitality locations across GTA." },
+            { img: "/mayo/3-removebg-preview.png",  tag: "Product News",     title: "3 New Mayo Flavours Launched",       desc: "Italian Herb, Jalapeño & Vegan Plain." },
+            { img: "/chai/8-removebg-preview.png",    tag: "Awards",           title: "Award Winning Quality",              desc: "Recognised for excellence across Canada." },
+          ].map((item, i) => (
+            <div key={i} className="wn-img-card" onClick={() => openSlide(NEWS_ITEMS[i % NEWS_ITEMS.length])}>
+              <img src={item.img} alt={item.title} className="wn-img-card-bg" />
+              <div className="wn-img-card-overlay" />
+              <div className="wn-img-card-body">
+                <span className="wn-img-card-tag">{item.tag}</span>
+                <h3 className="wn-img-card-title">{item.title}</h3>
+                <p className="wn-img-card-desc">{item.desc}</p>
               </div>
-              <div className="wn-card-body">
-                <span className="wn-category">{item.category}</span>
-                <span className="wn-date">{item.date}</span>
-                <h3 className="wn-card-title">{item.title}</h3>
-              </div>
+              <button className="img-card-cart-btn" onClick={e => e.stopPropagation()} aria-label="Shop now">🛒</button>
             </div>
           ))}
         </div>
@@ -773,32 +832,25 @@ export default function App() {
           <button className="recipes-view-more">View More →</button>
         </div>
 
-        {(() => {
-          const RECIPES = [
-            { time: "15 min", diet: "Veg",   title: "Tandoori Mayo Paneer Wrap",  desc: "Grilled paneer in Papaji mayo, warm roti, fresh veggies.", emoji: "🌯" },
-            { time: "20 min", diet: "Vegan", title: "Schezwan Noodles",           desc: "Bold Indo-Chinese toss with Papaji Schezwan sauce.",      emoji: "🍜" },
-            { time: "5 min",  diet: "Vegan", title: "Iced Cardamom Chai",         desc: "Brew, chill, pour over ice with oat milk.",               emoji: "🧋" },
-          ];
-          return (
-            <div className="rc-grid">
-              {RECIPES.map((r, i) => (
-                <div className="rc-card-new" key={i}>
-                  <div className="rc-card-top">
-                    <span className="rc-emoji-new">{r.emoji}</span>
-                  </div>
-                  <div className="rc-card-bottom">
-                    <div className="rc-meta">
-                      <span className="rc-meta-time">⏱ {r.time}</span>
-                      <span className="rc-meta-diet">🌿 {r.diet}</span>
-                    </div>
-                    <h3 className="rc-card-title-new">{r.title}</h3>
-                    <p className="rc-card-desc">{r.desc}</p>
-                  </div>
-                </div>
-              ))}
+        <div className="rc-img-grid">
+          {[
+            { img: "/Masala Back.jpeg",      time: "15 min", diet: "Veg",   title: "Tandoori Mayo Paneer Wrap",  desc: "Grilled paneer in Papaji mayo, warm roti, fresh veggies." },
+            { img: "/Cardamom Back.jpeg",    time: "20 min", diet: "Vegan", title: "Cardamom Chai Latte",        desc: "Creamy, spiced and perfect for a cozy morning." },
+            { img: "/Coffee Back.jpeg",      time: "5 min",  diet: "Vegan", title: "Iced Cardamom Chai",         desc: "Brew, chill, pour over ice with oat milk." },
+            { img: "/zafarani back .jpeg",   time: "10 min", diet: "Veg",   title: "Zafrani Chai Pudding",       desc: "Saffron-infused dessert with a chai twist." },
+          ].map((r, i) => (
+            <div className="rc-img-card" key={i}>
+              <img src={r.img} alt={r.title} className="rc-img-card-bg" />
+              <div className="rc-img-card-overlay" />
+              <div className="rc-img-card-body">
+                <span className="rc-img-card-meta">⏱ {r.time} &nbsp;·&nbsp; 🌿 {r.diet}</span>
+                <h3 className="rc-img-card-title">{r.title}</h3>
+                <p className="rc-img-card-desc">{r.desc}</p>
+              </div>
+              <button className="img-card-cart-btn" aria-label="View recipe">🛒</button>
             </div>
-          );
-        })()}
+          ))}
+        </div>
       </section>
 
       {/* PRODUCTS YOU LOVE */}
