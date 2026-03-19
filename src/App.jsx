@@ -769,23 +769,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* PAPER PLANE DIVIDER — after about */}
-      <div className="plane-divider plane-divider-after" aria-hidden="true">
-        <svg viewBox="0 0 1400 80" className="plane-divider-svg" xmlns="http://www.w3.org/2000/svg">
-          <path className="plane-dash-path" d="M0,28 C260,38 380,65 540,70 C700,74 860,52 1050,44 C1200,37 1320,42 1400,40" />
-          {/* single plane flying along the curve */}
-          <text fontSize="30" fill="#E6C800" dominantBaseline="middle">
-            ✈
-            <animateMotion dur="10s" repeatCount="indefinite" rotate="auto">
-              <mpath href="#curvePath2" />
-            </animateMotion>
-          </text>
-          <defs>
-            <path id="curvePath2" d="M0,28 C260,38 380,65 540,70 C700,74 860,52 1050,44 C1200,37 1320,42 1400,40" />
-          </defs>
-        </svg>
-      </div>
-
       {/* PREMIX BANNER */}
       <div className="premix-banner">
         <img src="/21Website-Banner-2-Machine-and-Premixes-.jpg" alt="Tea & Coffee Premix — Papaji Foods" className="premix-banner-img" />
