@@ -1464,7 +1464,7 @@ body {
 /* ===== ABOUT SECTION ===== */
 .about-section {
   background: var(--cream);
-  padding: 120px 24px;
+  padding: 10px 24px;
   overflow: hidden;
 }
 
@@ -2019,66 +2019,73 @@ body {
   .about-stats { flex-wrap: wrap; }
 }
 
-/* ===== PAPER PLANE DIVIDER ===== */
-.plane-divider {
+/* ===== IMAGE DIVIDERS ===== */
+.img-divider {
   width: 100%;
-  height: 80px;
-  position: relative;
-  background: var(--cream);
   line-height: 0;
-  overflow: visible;
+  overflow: hidden;
 }
 
-.plane-divider-svg {
+.img-divider-img {
   width: 100%;
-  height: 80px;
+  height: auto;
   display: block;
-  overflow: visible;
+  object-fit: contain;
 }
 
-.plane-dash-path {
-  fill: none;
-  stroke: #aaa49c;
-  stroke-width: 1.8;
-  stroke-dasharray: 10 8;
-  opacity: 0.65;
+/* single plane — after our process, right-aligned natural size */
+.img-divider-single {
+  width: 100%;
+  line-height: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.img-divider-single .img-divider-img {
+  width: 55%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .img-divider-single .img-divider-img {
+    width: 75%;
+  }
 }
 
 
 /* ===== PREMIX BANNER ===== */
 .premix-banner {
   width: 100%;
-  margin-top: -200px;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 20px 48px 60px;
   line-height: 0;
-  position: relative;
 }
 
 .premix-banner-img {
   width: 100%;
-  height: 800px;
+  height: auto;
   display: block;
+  border-radius: 20px;
   object-fit: cover;
-  object-position: center center;
-}
-
-@media (max-width: 1200px) {
-  .premix-banner {
-    margin-top: -80px;
-  }
-  .premix-banner-img {
-    height: 500px;
-    object-fit: cover;
-    object-position: center center;
-  }
 }
 
 @media (max-width: 900px) {
   .premix-banner {
-    margin-top: -40px;
+    padding: 0 24px 48px;
   }
   .premix-banner-img {
-    height: auto;
-    object-fit: contain;
+    border-radius: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .premix-banner {
+    padding: 0 16px 36px;
+  }
+  .premix-banner-img {
+    border-radius: 10px;
   }
 }
 

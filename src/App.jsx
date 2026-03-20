@@ -599,28 +599,9 @@ export default function App() {
         </div>
       </div>
 
-      {/* PAPER PLANE — before about */}
-      <div className="plane-divider plane-divider-before" aria-hidden="true">
-        <svg viewBox="0 0 1400 80" className="plane-divider-svg" xmlns="http://www.w3.org/2000/svg">
-          <path className="plane-dash-path" d="M0,55 C180,20 360,70 560,40 C720,18 860,55 1050,35 C1180,22 1300,45 1400,38" />
-          {/* plane 1 */}
-          <text fontSize="50" fill="#E6C800" dominantBaseline="middle">
-            ✈
-            <animateMotion dur="8s" repeatCount="indefinite" rotate="auto">
-              <mpath href="#wavePath1" />
-            </animateMotion>
-          </text>
-          {/* plane 2 — delayed */}
-          <text fontSize="20" fill="#E6C800" dominantBaseline="middle" opacity="0.85">
-            ✈
-            <animateMotion dur="8s" begin="4s" repeatCount="indefinite" rotate="auto">
-              <mpath href="#wavePath1" />
-            </animateMotion>
-          </text>
-          <defs>
-            <path id="wavePath1" d="M0,55 C180,20 360,70 560,40 C720,18 860,55 1050,35 C1180,22 1300,45 1400,38" />
-          </defs>
-        </svg>
+      {/* DIVIDER — before about */}
+      <div className="img-divider" aria-hidden="true">
+        <img src="/two-paperplane.png" alt="" className="img-divider-img" />
       </div>
 
       {/* ABOUT US */}
@@ -768,6 +749,11 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      {/* DIVIDER — after our process */}
+      <div className="img-divider-single" aria-hidden="true">
+        <img src="/single-paperplane2.png" alt="" className="img-divider-img" />
+      </div>
 
       {/* PREMIX BANNER */}
       <div className="premix-banner">
